@@ -9,6 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'curb', '= 0.9.7'
 gem 'dry-initializer'
+gem 'tram-page'
 
 group :development, :test do
   gem 'byebug'
