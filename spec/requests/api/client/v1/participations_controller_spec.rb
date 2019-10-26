@@ -19,6 +19,10 @@ describe Api::Client::V1::ParticipationsController do
       subject
       expect(response).to have_http_status(201)
     end
+    it 'calls Participations::ZTestTags::Process' do
+      expect(Participations::ZTestTags::Process).to receive(:call).and_call_original
+      subject
+    end
   end
 
   context '#destroy' do

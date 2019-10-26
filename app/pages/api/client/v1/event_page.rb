@@ -1,5 +1,5 @@
 module Api::Client::V1
-  class EventPage < Tram::Page
+  class EventPage < ApplicationPage
     param :event
 
     section :id, value: -> { event.id }

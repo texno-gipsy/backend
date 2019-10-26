@@ -1,7 +1,8 @@
 module Api::Client::V1
   class ParticipationsController < ApplicationController
     def create
-      Participation.find_or_create_by(user: current_user, event: event)
+      participation = Participation.find_or_create_by(user: current_user, event: event)
+      Participations::ZTestTags::Process.call(participation)
       head :created
     end
 

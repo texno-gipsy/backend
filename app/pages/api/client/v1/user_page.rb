@@ -1,5 +1,5 @@
 module Api::Client::V1
-  class UserPage < Tram::Page
+  class UserPage < ApplicationPage
     param :user
 
     section :id, value: -> { user.id }

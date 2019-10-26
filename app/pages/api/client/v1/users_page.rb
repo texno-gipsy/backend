@@ -1,5 +1,5 @@
 module Api::Client::V1
-  class UsersPage < Tram::Page
+  class UsersPage < ApplicationPage
     param :users
 
     section :data

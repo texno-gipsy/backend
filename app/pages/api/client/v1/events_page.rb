@@ -1,5 +1,5 @@
 module Api::Client::V1
-  class EventsPage < Tram::Page
+  class EventsPage < ApplicationPage
     param :events
 
     section :data
