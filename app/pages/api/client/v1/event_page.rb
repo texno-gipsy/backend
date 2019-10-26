@@ -2,6 +2,7 @@ module Api::Client::V1
   class EventPage < ApplicationPage
     param :event
 
+    option :user, optional: true
     option :place, optional: true
 
     section :id, value: -> { event.id }
@@ -18,5 +19,12 @@ module Api::Client::V1
     section :limit, value: -> { event.limit }
     section :participants_ids, value: -> { event.participants.map(&:id).sort }
     section :type, value: -> { place ? :place : :event }
+    section :score
+
+    def score
+      return 0.0 unless user
+
+      Events::GetScore.call(event, user).round(6)
+    end
   end
 end

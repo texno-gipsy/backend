@@ -2,6 +2,7 @@ module Api::Client::V1
   class EventsPage < ApplicationPage
     param :events
 
+    option :user, optional: true
     option :params, default: -> { {} }
     option :lat, default: -> { params[:lat] }
     option :lon, default: -> { params[:lon] }
@@ -9,7 +10,7 @@ module Api::Client::V1
     section :data
 
     def data
-      events.map { |e| EventPage.new(e).to_h } +
+      events.map { |e| EventPage.new(e, user: user).to_h } +
         places.map.with_index { |place, i| place_to_event_page(place, i).to_h }
     end
 

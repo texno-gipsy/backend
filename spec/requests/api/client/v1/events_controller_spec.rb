@@ -5,7 +5,7 @@ describe Api::Client::V1::EventsController do
   let(:headers) do
     {
       'Content-Type' => 'application/json',
-      'user_id' => creator.id
+      'User-Id' => creator.id
     }
   end
 
@@ -40,7 +40,8 @@ describe Api::Client::V1::EventsController do
             duration: event.duration,
             limit: event.limit,
             participants_ids: event.participants.map(&:id).sort,
-            type: 'event'
+            type: 'event',
+            score: 0.0
           }
         ].as_json
       )
@@ -78,7 +79,8 @@ describe Api::Client::V1::EventsController do
             duration: nil,
             limit: nil,
             participants_ids: [],
-            type: 'place'
+            type: 'place',
+            score: 0.0
           }.as_json
         )
       end
@@ -143,7 +145,8 @@ describe Api::Client::V1::EventsController do
           duration: created_event.duration,
           limit: created_event.limit,
           participants_ids: created_event.participants.map(&:id).sort,
-          type: 'event'
+          type: 'event',
+          score: 0.0
         }.as_json
       )
     end

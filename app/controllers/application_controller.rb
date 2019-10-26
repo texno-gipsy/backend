@@ -6,6 +6,8 @@ class ApplicationController < ActionController::API
   private
 
   def current_user
-    @current_user ||= User.find(request.headers['user_id'])
+    return unless request.headers['User-Id']
+
+    @current_user ||= User.find(request.headers['User-Id'])
   end
 end

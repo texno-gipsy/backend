@@ -1,10 +1,10 @@
 # API
-base_url:  https://texno-gipsy.herokuapp.com
+**base_url:  https://texno-gipsy.herokuapp.com**
 
 Headers
 ```json
 {
-  "user_id": 1,
+  "User-Id": 1,
   "Content-Type": "application/json"
 }
 ```
@@ -76,8 +76,7 @@ Request body:
   "end_at": "2019-12-31T21:00:00Z",
   "duration": 5,
   "limit": 10,
-  "participants_ids": [],
-  "type": "event"
+  "participants_ids": []
 }
 ```
 
@@ -102,7 +101,8 @@ Request body:
   "duration": 5,
   "limit": 10,
   "participants_ids": [],
-  "type": "event"
+  "type": "event",
+  "score": 0.123456
 }
 ```
 
@@ -130,7 +130,8 @@ Request body:
     "duration": 5,
     "limit": 10,
     "participants_ids": [],
-    "type": "event"
+    "type": "event",
+    "score": 0.123456
   }
 ]
 ```
