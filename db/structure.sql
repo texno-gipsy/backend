@@ -116,7 +116,8 @@ CREATE TABLE public.users (
     name character varying,
     instagram character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    tags character varying[]
 );
 
 
@@ -246,6 +247,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20191025215140'),
 ('20191025215173'),
-('20191025231616');
+('20191025231616'),
+('20191026112253');
 
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :client do
       namespace :v1 do
-        resources :users, only: %i[index show]
+        resources :users, only: %i[index show update]
         resources :events, only: %i[index update create show destroy]
       end
     end

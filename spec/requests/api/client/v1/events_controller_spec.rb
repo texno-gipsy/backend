@@ -55,7 +55,7 @@ describe Api::Client::V1::EventsController do
         lon: 2.5,
         lat: 3.6,
         radius: 5,
-        tags: %w[tag1 tag2],
+        tags: %w[music movie],
         start_at: '2019-01-01'.to_time.utc.to_formatted_s(:iso8601),
         end_at: '2020-01-01'.to_time.utc.to_formatted_s(:iso8601),
         duration: 5,
