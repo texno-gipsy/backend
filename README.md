@@ -15,6 +15,7 @@ Headers
 Request body:
 ```json
 {
+  "id": 1, // positive or negative integer
   "title": "ea",
   "description": "Beatae nulla amet facilis.",
   "lon": 2.5,
@@ -24,11 +25,12 @@ Request body:
     "music",
     "movie"
   ],
-  "start_at": "2018-12-31T21:00:00Z",
-  "end_at": "2019-12-31T21:00:00Z",
+  "start_at": "2018-12-31T21:00:00Z", // optional
+  "end_at": "2019-12-31T21:00:00Z", // optional
   "duration": 5,
   "limit": 10,
-  "participants_ids": []
+  "participants_ids": [],
+  "type": "event" // "place", "event"
 }
 ```
 
@@ -52,7 +54,8 @@ Request body:
   "end_at": "2019-12-31T21:00:00Z",
   "duration": 5,
   "limit": 10,
-  "participants_ids": []
+  "participants_ids": [],
+  "type": "event"
 }
 ```
 
@@ -73,7 +76,8 @@ Request body:
   "end_at": "2019-12-31T21:00:00Z",
   "duration": 5,
   "limit": 10,
-  "participants_ids": []
+  "participants_ids": [],
+  "type": "event"
 }
 ```
 
@@ -97,7 +101,8 @@ Request body:
   "end_at": "2019-12-31T21:00:00Z",
   "duration": 5,
   "limit": 10,
-  "participants_ids": []
+  "participants_ids": [],
+  "type": "event"
 }
 ```
 
@@ -124,7 +129,8 @@ Request body:
     "end_at": "2019-12-31T21:00:00Z",
     "duration": 5,
     "limit": 10,
-    "participants_ids": []
+    "participants_ids": [],
+    "type": "event"
   }
 ]
 ```

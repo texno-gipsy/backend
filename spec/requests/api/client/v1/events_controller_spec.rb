@@ -10,10 +10,11 @@ describe Api::Client::V1::EventsController do
   end
 
   context '#index' do
-    subject { get '/api/client/v1/events', headers: headers }
+    subject { get '/api/client/v1/events', headers: headers, params: params }
 
     let(:event) { create(:event) }
     let(:participant) { create(:user) }
+    let(:params) { {} }
 
     before { create(:participation, event: event, user: participant) }
 
@@ -38,10 +39,49 @@ describe Api::Client::V1::EventsController do
             end_at: event.end_at.utc.to_formatted_s(:iso8601),
             duration: event.duration,
             limit: event.limit,
-            participants_ids: event.participants.map(&:id).sort
+            participants_ids: event.participants.map(&:id).sort,
+            type: 'event'
           }
         ].as_json
       )
+    end
+
+    context 'with places' do
+      let(:params) do
+        {
+          lat: 55.751244,
+          lon: 37.618423
+        }
+      end
+      let(:response_body) do
+        file_fixture('json/here_we_are/places.json').read
+      end
+
+      before do
+        stub_request(:get, /here.com/).to_return(status: 200, body: response_body, headers: {})
+      end
+
+      it 'returns json' do
+        subject
+        expect(json_data.last).to eq(
+          {
+            id: -20,
+            title: 'Voskhod',
+            description: nil,
+            creator_id: nil,
+            lon: 37.627329,
+            lat: 55.750317,
+            radius: nil,
+            tags: %w[restaurant europeancuisine russiancuisine seafoodcuisine],
+            start_at: nil,
+            end_at: nil,
+            duration: nil,
+            limit: nil,
+            participants_ids: [],
+            type: 'place'
+          }.as_json
+        )
+      end
     end
   end
 
@@ -52,8 +92,8 @@ describe Api::Client::V1::EventsController do
       {
         title: Faker::Lorem.word,
         description: Faker::Lorem.sentence,
-        lon: 2.5,
-        lat: 3.6,
+        lat: 55.751244,
+        lon: 37.618423,
         radius: 5,
         tags: %w[music movie],
         start_at: '2019-01-01'.to_time.utc.to_formatted_s(:iso8601),
@@ -102,7 +142,8 @@ describe Api::Client::V1::EventsController do
           end_at: created_event.end_at.utc.to_formatted_s(:iso8601),
           duration: created_event.duration,
           limit: created_event.limit,
-          participants_ids: created_event.participants.map(&:id).sort
+          participants_ids: created_event.participants.map(&:id).sort,
+          type: 'event'
         }.as_json
       )
     end

@@ -12,7 +12,7 @@ module Api::Client::V1
 
     def index
       events = Event.where(is_deleted: false)
-      render json: EventsPage.new(events).to_h, status: :ok
+      render json: EventsPage.new(events, params: params).to_h, status: :ok
     end
 
     def show
