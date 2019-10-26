@@ -12,7 +12,6 @@ Headers
 ## Events
 **POST /api/client/v1/events**
 
-**PATCH /api/client/v1/events/:id**
 Request body:
 ```json
 {
@@ -34,6 +33,51 @@ Request body:
 ```
 
 *Response code: 201*
+
+*Response body:*
+```json
+{
+  "id": 27,
+  "title": "ea",
+  "description": "Beatae nulla amet facilis.",
+  "creator_id": 49,
+  "lon": 2.5,
+  "lat": 3.6,
+  "radius": 5,
+  "tags": [
+    "music",
+    "movie"
+  ],
+  "start_at": "2018-12-31T21:00:00Z",
+  "end_at": "2019-12-31T21:00:00Z",
+  "duration": 5,
+  "limit": 10,
+  "participants_ids": []
+}
+```
+
+**PATCH /api/client/v1/events/:id**
+Request body:
+```json
+{
+  "title": "ea",
+  "description": "Beatae nulla amet facilis.",
+  "lon": 2.5,
+  "lat": 3.6,
+  "radius": 5,
+  "tags": [
+    "music",
+    "movie"
+  ],
+  "start_at": "2018-12-31T21:00:00Z",
+  "end_at": "2019-12-31T21:00:00Z",
+  "duration": 5,
+  "limit": 10,
+  "participants_ids": []
+}
+```
+
+*Response code: 200*
 
 *Response body:*
 ```json
@@ -84,6 +128,10 @@ Request body:
   }
 ]
 ```
+
+**DELETE /api/client/v1/events/:id**
+
+*Response code: 200*
 
 ## Users
 
@@ -162,3 +210,25 @@ Request body:
   ]
 }
 ```
+
+## Participations
+
+**POST /api/client/v1/participations**
+
+*Request body:*
+```json
+{
+  "event_id": 1
+}
+```
+*Response code: 201*
+
+**DELETE /api/client/v1/participations**
+
+*Request body:*
+```json
+{
+  "event_id": 1
+}
+```
+*Response code: 200*

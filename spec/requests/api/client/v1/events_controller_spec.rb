@@ -127,4 +127,18 @@ describe Api::Client::V1::EventsController do
       expect(json_data['title']).to eq(params[:title])
     end
   end
+
+  context '#destroy' do
+    subject { delete "/api/client/v1/events/#{event.id}", headers: headers }
+
+    let!(:event) { create(:event) }
+
+    it 'returns 200' do
+      subject
+      expect(response).to have_http_status(200)
+    end
+    it 'sets is_deleted' do
+      expect { subject }.to change { event.reload.is_deleted }.from(false).to(true)
+    end
+  end
 end

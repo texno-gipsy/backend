@@ -21,7 +21,7 @@ module Api::Client::V1
 
     def destroy
       event.update!(is_deleted: true)
-      render json: { data: EventPage.new(event).to_h }, status: :ok
+      head :ok
     end
 
     private
